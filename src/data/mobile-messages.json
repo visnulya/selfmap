@@ -1,0 +1,189 @@
+[
+  {
+    "id": "hermes-question",
+    "x": 190,
+    "y": 359,
+    "width": 183,
+    "height": 36,
+    "radius": 17.5,
+    "side": "right",
+    "textX": 10,
+    "baselines": [
+      23
+    ],
+    "lines": [
+      "Куда ты так несешься?"
+    ],
+    "tailHeight": 16.5,
+    "tailWidth": 16.53,
+    "tailControl": -1.476
+  },
+  {
+    "id": "hermes-red-flag",
+    "x": 214,
+    "y": 405,
+    "width": 124,
+    "height": 44,
+    "radius": 17.5,
+    "side": "left",
+    "textX": 17,
+    "baselines": [
+      20,
+      34
+    ],
+    "lines": [
+      "Она сказала,",
+      "что я red flag!"
+    ],
+    "tailHeight": 18.5,
+    "tailWidth": 16.776,
+    "tailControl": -1.94
+  },
+  {
+    "id": "hermes-why",
+    "x": 289,
+    "y": 548,
+    "width": 90,
+    "height": 36,
+    "radius": 17.5,
+    "side": "right",
+    "textX": 15,
+    "baselines": [
+      23
+    ],
+    "lines": [
+      "Почему?"
+    ],
+    "tailHeight": 16.5,
+    "tailWidth": 16.53,
+    "tailControl": -1.476
+  },
+  {
+    "id": "hermes-mercury",
+    "x": 220,
+    "y": 599,
+    "width": 165,
+    "height": 107,
+    "radius": 17.5,
+    "side": "left",
+    "textX": 13,
+    "baselines": [
+      21,
+      35,
+      49,
+      77,
+      91
+    ],
+    "lines": [
+      "Меркурий в",
+      "Близнецах, со всеми",
+      "нахожу общий язык.",
+      "Особенно с",
+      "женщинами."
+    ],
+    "tailHeight": 27.5,
+    "tailWidth": 18.176,
+    "tailControl": 0.994
+  },
+  {
+    "id": "boundaries-question",
+    "x": 54,
+    "y": 1916,
+    "width": 239,
+    "height": 45,
+    "radius": 17.5,
+    "side": "left",
+    "textX": 17,
+    "baselines": [
+      20,
+      34
+    ],
+    "lines": [
+      "Зачем вы так внимательно",
+      "его рассматриваете?"
+    ],
+    "tailHeight": 12.5,
+    "tailWidth": 16.376,
+    "tailControl": -0.014
+  },
+  {
+    "id": "boundaries-search",
+    "x": 68,
+    "y": 1976,
+    "width": 132,
+    "height": 47,
+    "radius": 17.5,
+    "side": "right",
+    "textX": 14,
+    "baselines": [
+      20,
+      34
+    ],
+    "lines": [
+      "Ищу признаки",
+      "личных границ"
+    ],
+    "tailHeight": 20,
+    "tailWidth": 15.988,
+    "tailControl": -1.612
+  },
+  {
+    "id": "boundaries-found",
+    "x": 35,
+    "y": 2278,
+    "width": 87,
+    "height": 33,
+    "radius": 10,
+    "side": "left",
+    "textX": 17,
+    "baselines": [
+      22
+    ],
+    "lines": [
+      "Нашли?"
+    ],
+    "tailHeight": 12,
+    "tailWidth": 5.376,
+    "tailControl": -0.85
+  },
+  {
+    "id": "boundaries-hope",
+    "x": 76,
+    "y": 2338,
+    "width": 121,
+    "height": 34,
+    "radius": 14,
+    "side": "right",
+    "textX": 13,
+    "baselines": [
+      23
+    ],
+    "lines": [
+      "Надеюсь нет"
+    ],
+    "tailHeight": 17,
+    "tailWidth": 15.3,
+    "tailControl": -2.004
+  },
+  {
+    "id": "archetypes-question",
+    "x": 99,
+    "y": 2925,
+    "width": 184,
+    "height": 49,
+    "radius": 17.5,
+    "side": "right",
+    "textX": 17,
+    "baselines": [
+      21,
+      35
+    ],
+    "lines": [
+      "Что ты можешь мне",
+      "дать как женщина"
+    ],
+    "tailHeight": 16.5,
+    "tailWidth": 16.834,
+    "tailControl": 0.744
+  }
+]

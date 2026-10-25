@@ -1,0 +1,14 @@
+import{chromium}from'playwright';
+const b=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+const p=await b.newPage({viewport:{width:1440,height:900}});
+await p.addInitScript(()=>{window.crackLog=[];for(const type of ['animationstart','animationend','animationcancel'])addEventListener(type,e=>{if(e.animationName==='crack-development')window.crackLog.push([type,e.elapsedTime,performance.now()]);},true);});
+await p.goto('http://127.0.0.1:5173/');await p.waitForTimeout(2800);
+await p.addStyleTag({content:'.crack-reveal-sweep{animation-play-state:paused!important}'});
+await p.locator('[data-node-id="1529:55"]').scrollIntoViewIfNeeded();
+await p.waitForSelector('[data-crack-intro="running"]');
+console.log(await p.evaluate(()=>({state:document.querySelector('.selfmap').dataset.crackIntro,animations:document.getAnimations().map(a=>({name:a.animationName,time:a.currentTime,state:a.playState})),original:getComputedStyle(document.querySelector('[data-crack-original]')).visibility,mask:[...document.querySelectorAll('.crack-reveal-sweep')].map(n=>({opacity:getComputedStyle(n).opacity,dash:getComputedStyle(n).strokeDashoffset,animation:getComputedStyle(n).animation}))})));
+await p.evaluate(()=>{for(const a of document.getAnimations())if(a.animationName==='crack-development'){a.pause();a.currentTime=0;}});
+await p.screenshot({path:'artifacts/visual/crack-intro/probe.png',fullPage:true});
+console.log(await p.locator('.selfmap').getAttribute('data-crack-intro'));
+console.log(await p.evaluate(()=>({log:window.crackLog,animations:document.getAnimations().map(a=>[a.animationName,a.currentTime,a.playState])})));
+await b.close();

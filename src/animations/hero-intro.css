@@ -1,0 +1,63 @@
+/* Only the original Hermes image and his four first-screen dialogue bubbles.
+   Completed/reduced-motion scenes use the untouched static layout rules. */
+@media (prefers-reduced-motion: no-preference) {
+  .selfmap:is([data-hero-intro='pending'], [data-hero-intro='running']) [data-intro-hermes] {
+    transform-origin: 55% 80%;
+    will-change: transform, opacity;
+  }
+  .figma-scene--desktop { --hermes-entry-x: 1200px; }
+  .figma-scene--mobile { --hermes-entry-x: 700px; }
+
+  /* Figma's desktop dialogue groups use display:contents and global layer
+     coordinates. Give each an animation box at the same canvas origin only
+     while the intro runs; return to display:contents after the last bubble. */
+  .selfmap:is([data-hero-intro='pending'], [data-hero-intro='running']) .figma-scene--desktop [data-intro-dialog] {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1440px;
+    height: 1000px;
+    pointer-events: none;
+  }
+  .figma-scene--desktop [data-intro-dialog='0'] { --dialog-origin: 1238px 126px; }
+  .figma-scene--desktop [data-intro-dialog='1'] { --dialog-origin: 1235px 204px; }
+  .figma-scene--desktop [data-intro-dialog='2'] { --dialog-origin: 1332px 385px; }
+  .figma-scene--desktop [data-intro-dialog='3'] { --dialog-origin: 1243px 500px; }
+  [data-intro-dialog='0'] { --dialog-delay: 1200ms; }
+  [data-intro-dialog='1'] { --dialog-delay: 1450ms; }
+  [data-intro-dialog='2'] { --dialog-delay: 1700ms; }
+  [data-intro-dialog='3'] { --dialog-delay: 1950ms; }
+
+  .selfmap:is([data-hero-intro='pending'], [data-hero-intro='running']) [data-intro-dialog] {
+    transform-origin: var(--dialog-origin, center);
+    will-change: transform, opacity;
+  }
+  .selfmap[data-hero-intro='pending'] [data-intro-hermes] {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(var(--hermes-entry-x), 0, 0) rotate(-6deg);
+  }
+  .selfmap[data-hero-intro='pending'] [data-intro-dialog] {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(0, 10px, 0) scale(.94);
+  }
+  .selfmap[data-hero-intro='running'] [data-intro-hermes] {
+    animation: hermes-arrival 1100ms cubic-bezier(.16,.88,.24,1) both;
+  }
+  .selfmap[data-hero-intro='running'] [data-intro-dialog] {
+    animation: hero-dialog-arrival 400ms cubic-bezier(.2,.8,.2,1) var(--dialog-delay) both;
+  }
+}
+
+@keyframes hermes-arrival {
+  0% { opacity: 0; transform: translate3d(var(--hermes-entry-x), 0, 0) rotate(-6deg); }
+  7% { opacity: 1; }
+  82% { opacity: 1; transform: translate3d(-6px, 0, 0) rotate(-.5deg); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes hero-dialog-arrival {
+  from { opacity: 0; transform: translate3d(0, 10px, 0) scale(.94); }
+  to { opacity: 1; transform: none; }
+}

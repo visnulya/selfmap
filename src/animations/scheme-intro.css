@@ -1,0 +1,65 @@
+/* Reveal the original SVG strokes using a growing circular clipping region.
+   Every mask is centred on the original "Ты" circle in that layer's local
+   coordinates. No guide, glyph, image, or final position is redrawn. */
+@media (prefers-reduced-motion: no-preference) {
+  .figma-scene--desktop { --scheme-start-radius: 87px; }
+  .figma-scene--mobile { --scheme-start-radius: 39.5px; }
+
+  [data-scheme-line='archetypes'] { --scheme-line-delay: 400ms; }
+  [data-scheme-line='numerology'] { --scheme-line-delay: 580ms; }
+  [data-scheme-line='astrology'] { --scheme-line-delay: 760ms; }
+  [data-scheme-line='philosophy'] { --scheme-line-delay: 940ms; }
+  [data-scheme-label='archetypes'] { --scheme-label-delay: 1250ms; }
+  [data-scheme-label='numerology'] { --scheme-label-delay: 1430ms; }
+  [data-scheme-label='astrology'] { --scheme-label-delay: 1610ms; }
+  [data-scheme-label='philosophy'] { --scheme-label-delay: 1790ms; }
+
+  .figma-scene--desktop [data-scheme-line='archetypes'] { --scheme-x: 364.5px; --scheme-y: 51.32px; --scheme-end-radius: 430px; }
+  .figma-scene--desktop [data-scheme-line='numerology'] { --scheme-x: 409px; --scheme-y: 223.89px; --scheme-end-radius: 500px; }
+  .figma-scene--desktop [data-scheme-line='astrology'] { --scheme-x: 164.5px; --scheme-y: 442px; --scheme-end-radius: 520px; }
+  .figma-scene--desktop [data-scheme-line='philosophy'] { --scheme-x: -146px; --scheme-y: 375px; --scheme-end-radius: 460px; }
+  .figma-scene--mobile [data-scheme-line='archetypes'] { --scheme-x: 164.53px; --scheme-y: 24.22px; --scheme-end-radius: 200px; }
+  .figma-scene--mobile [data-scheme-line='numerology'] { --scheme-x: 184.5px; --scheme-y: 101.4px; --scheme-end-radius: 240px; }
+  .figma-scene--mobile [data-scheme-line='astrology'] { --scheme-x: 74.5px; --scheme-y: 200.4px; --scheme-end-radius: 260px; }
+  .figma-scene--mobile [data-scheme-line='philosophy'] { --scheme-x: -65px; --scheme-y: 170.9px; --scheme-end-radius: 240px; }
+
+  .selfmap[data-scheme-intro='idle'] [data-scheme-circle],
+  .selfmap[data-scheme-intro='idle'] [data-scheme-decor],
+  .selfmap[data-scheme-intro='idle'] [data-scheme-label] p { opacity: 0; }
+  .selfmap[data-scheme-intro='idle'] [data-scheme-line] { visibility: hidden; }
+
+  .selfmap[data-scheme-intro='running'] [data-scheme-circle='ring'] {
+    transform-origin: center;
+    animation: scheme-circle-reveal 360ms cubic-bezier(.2,.7,.3,1) both;
+  }
+  .selfmap[data-scheme-intro='running'] :is([data-scheme-circle='label'], [data-scheme-circle='echo']) {
+    animation: scheme-center-ink 360ms ease-out both;
+  }
+  .selfmap[data-scheme-intro='running'] [data-scheme-line]:not([data-scheme-line='stem']) {
+    animation: scheme-branch-grow 1100ms cubic-bezier(.42,0,.22,1) var(--scheme-line-delay) both;
+  }
+  .selfmap[data-scheme-intro='running'] [data-scheme-line='stem'] {
+    animation: scheme-stem-grow 800ms cubic-bezier(.42,0,.22,1) 320ms both;
+  }
+  .selfmap[data-scheme-intro='running'] [data-scheme-label] p {
+    animation: scheme-label-reveal 420ms ease-out var(--scheme-label-delay) both;
+  }
+  .selfmap[data-scheme-intro='running'] [data-scheme-decor] {
+    animation: scheme-center-ink 420ms ease-out 1790ms both;
+  }
+}
+
+@keyframes scheme-circle-reveal {
+  from { opacity: 0; transform: scale(.97); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes scheme-center-ink { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scheme-label-reveal { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scheme-branch-grow {
+  from { clip-path: circle(var(--scheme-start-radius) at var(--scheme-x) var(--scheme-y)); }
+  to { clip-path: circle(var(--scheme-end-radius) at var(--scheme-x) var(--scheme-y)); }
+}
+@keyframes scheme-stem-grow {
+  from { clip-path: inset(0 -10px 100% -10px); }
+  to { clip-path: inset(0 -10px 0 -10px); }
+}

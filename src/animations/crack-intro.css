@@ -1,0 +1,17 @@
+.crack-animation-layer { display: none; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+ .selfmap:not([data-crack-intro='complete']) [data-crack-original] { visibility: hidden; }
+ .selfmap:not([data-crack-intro='complete']) .crack-animation-layer { display: block; }
+ .selfmap[data-crack-intro='idle'] .crack-reveal-sweep { opacity: 0; stroke-dasharray: 1; stroke-dashoffset: 1; }
+ .selfmap[data-crack-intro='running'] .crack-reveal-sweep { animation: crack-development 1800ms linear both; }
+}
+@keyframes crack-development {
+  0% { opacity: 0; stroke-dasharray: 1; stroke-dashoffset: 1; }
+  1% { opacity: 1; stroke-dasharray: 1; stroke-dashoffset: .99; }
+  18% { stroke-dasharray: 1; stroke-dashoffset: .82; }
+  31% { stroke-dasharray: 1; stroke-dashoffset: .74; }
+  55% { stroke-dasharray: 1; stroke-dashoffset: .43; }
+  68% { stroke-dasharray: 1; stroke-dashoffset: .35; }
+  87% { stroke-dasharray: 1; stroke-dashoffset: .09; }
+  100% { stroke-dasharray: 1; stroke-dashoffset: 0; }
+}

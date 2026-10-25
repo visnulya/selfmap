@@ -1,0 +1,3 @@
+import {chromium} from 'playwright';
+const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+try{const page=await browser.newPage();await page.goto('http://127.0.0.1:5173/',{waitUntil:'networkidle'});console.log(await page.evaluate(async()=>{await document.fonts.ready;const ctx=document.createElement('canvas').getContext('2d');const out=[];for(const size of [14,15,16]){ctx.font=`${size}px Arimo`;out.push({size,mercury:ctx.measureText('Меркурий в').width,line2:ctx.measureText('Близнецах, со всеми').width,first:ctx.measureText('Куда ты так несешься?').width});}return out;}));}finally{await browser.close();}

@@ -1,0 +1,43 @@
+# Dependencies, generated builds and local verification output
+node_modules/
+dist/
+.vite/
+.cache/
+coverage/
+artifacts/
+checkpoints/
+# Figma exports, reference images and local design history; runtime data is in src/data.
+design/
+
+# Temporary files and backup archives
+*.log
+*.tmp
+*.temp
+*.base64
+*.zip
+*.7z
+*.tar
+*.gz
+*.bak
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local configuration and credentials must never be committed
+.env
+.env.*
+!.env.example
+.npmrc
+.netrc
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
+service-account*.json
+.aws/
+.codex/
+.agents/

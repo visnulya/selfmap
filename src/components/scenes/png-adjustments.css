@@ -1,0 +1,24 @@
+/* Scoped changes measured against desktop-updated.png and mobile-updated.png.
+   Keep the imported scenes intact; no other element changes position. */
+.figma-scene--desktop :is(
+  [data-node-id='1567:31'],
+  [data-node-id='1535:113'], [data-node-id='1535:114'],
+  [data-node-id='1535:115'], [data-node-id='1535:116'],
+  [data-node-id='1535:119'], [data-node-id='1535:120'],
+  [data-node-id='1535:121'], [data-node-id='1535:122']
+) { translate: 0 -51px; }
+
+.mobile-messages { display: contents; }
+.mobile-message { position: absolute; z-index: 1000; font-family: 'Arimo', sans-serif; font-weight: 400; }
+.mobile-message-outline, .mobile-message-text { position: absolute; top: 0; display: block; overflow: visible; }
+.mobile-message-text { left: 0; white-space: pre; }
+
+/* Each letter's outer frame owns the -50% centering offset. The inner
+   rotation must not inherit and apply that translation a second time. */
+.figma-scene--desktop :is(
+  [data-node-id='1567:518'], [data-node-id='1567:528'],
+  [data-node-id='1567:540'], [data-node-id='1567:553'],
+  [data-node-id='1567:565']
+) > [data-node-id] > div { --layer-translate-x: 0px; }
+
+.mobile-vessel-connection { position: absolute; z-index: 2; overflow: visible; display: block; pointer-events: none; }

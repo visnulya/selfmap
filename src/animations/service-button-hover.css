@@ -1,0 +1,21 @@
+/* The normal state retains the approved Figma geometry and background. */
+.service-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .service-button:hover {
+    background-color: color-mix(in srgb, #f79f4f 94%, #fffaf5);
+  }
+  .service-button:hover::after { border-color: #915d2e; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .service-button { transition: background-color 350ms ease; }
+  .service-button::after { transition: border-color 350ms ease; }
+  [data-service-arrow] { transition: translate 350ms ease; }
+  .service-button:hover ~ [data-service-arrow] { translate: 3px 0; }
+}

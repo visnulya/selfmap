@@ -1,0 +1,23 @@
+/* Reuse the approved hero-dialog-arrival keyframes and exact timing curve. */
+@media (prefers-reduced-motion: no-preference) {
+  .figma-scene--desktop [data-scroll-message]:not([data-scroll-message-state='complete']) {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1440px;
+    height: 6269px;
+    pointer-events: none;
+  }
+  [data-scroll-message]:not([data-scroll-message-state='complete']) {
+    transform-origin: var(--scroll-dialog-origin, center);
+    will-change: transform, opacity;
+  }
+  [data-scroll-message-state='idle'] {
+    opacity: 0;
+    /* Keep the observation target measurable while hiding all paint. */
+  }
+  [data-scroll-message-state='running'] {
+    animation: hero-dialog-arrival 400ms cubic-bezier(.2,.8,.2,1) var(--scroll-dialog-delay) both;
+  }
+}
